@@ -35,6 +35,13 @@ export const MainContainerContent = styled.main`
             border-radius: .25rem;
             width: 100px;
             padding: 14px;
+            transition: ease-in-out .2s;
+        
+        &:disabled{
+            filter: brightness(0.7);
+            cursor: not-allowed;
+        }
+        
         }
     }
 `
