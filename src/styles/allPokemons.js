@@ -2,15 +2,20 @@ import styled from 'styled-components'
 
 export const MainContainerContent = styled.main`
 
-    margin: 0 auto;
-    position: relative;
-    padding: 2rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
-    .pagination{
-        display: flex;
+
+    position: relative;
+    margin: 0 auto;
+    padding: 2rem 4rem;
+`
+
+export const Pagination = styled.div`
+ display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 10px;
+        padding: 2rem 4rem;
 
         .index-container{
 
@@ -37,11 +42,11 @@ export const MainContainerContent = styled.main`
             padding: 14px;
             transition: ease-in-out .2s;
         
-        &:disabled{
-            filter: brightness(0.7);
-            cursor: not-allowed;
+            &:disabled{
+                filter: brightness(0.7);
+                cursor: not-allowed;
+            }
         }
         
-        }
-    }
+
 `

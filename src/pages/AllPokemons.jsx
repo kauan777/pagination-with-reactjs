@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Pokemon from '../components/Pokemon';
 
 import '../styles/allPokemons'
-import { MainContainerContent } from '../styles/allPokemons';
+import { MainContainerContent, Pagination } from '../styles/allPokemons';
 
 
 function AllPokemons() {
@@ -50,14 +50,15 @@ function AllPokemons() {
 
 
     return (
-        <MainContainerContent>
-            {pokemons.map(pokemon => {
-                return (
-                    <Pokemon key={pokemon.name} name={pokemon.name} />
-                )
-            })}
-
-            <div className='pagination'>
+        <>
+            <MainContainerContent>
+                {pokemons.map((pokemon, index) => {
+                    return (
+                        <Pokemon key={pokemon.name} name={pokemon.name} urlImage={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index + 1}.png`} />
+                    )
+                })}
+            </MainContainerContent>
+            <Pagination className='pagination'>
                 <button onClick={handlePreviousPage}
                     disabled={previousPage == null}>
                     Voltar
@@ -73,9 +74,8 @@ function AllPokemons() {
                 <button onClick={handleNextPage}>
                     Próximo
                 </button>
-            </div>
-
-        </MainContainerContent>
+            </Pagination>
+        </>
     );
 }
 

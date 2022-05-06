@@ -2,12 +2,24 @@ import styled from 'styled-components'
 
 export const PokemonStyles = styled.main`
 
-    background-color: #D8D8D8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
     padding: 1rem;
     margin: 24px;
+    
     border-radius: .25rem;
+    background-color: #D8D8D8;
+    
     transition: .1s ease-in-out;
     cursor: pointer;
+
+    img{
+        width: 100% ;
+    }
+
 
     h3{
         color: #393939;
