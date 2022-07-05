@@ -5,14 +5,18 @@ export const MainContainerContent = styled.main`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
-
     position: relative;
     margin: 0 auto;
     padding: 2rem 4rem;
 `
 
 export const Pagination = styled.div`
- display: flex;
+
+        &.pagination-first{
+            padding: 3rem 4rem 0rem 4rem;
+        }
+
+        display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 2rem 4rem;

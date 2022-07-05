@@ -1,8 +1,10 @@
 import Header from './components/Header'
-import { Route, Routes } from 'react-router-dom'
 import AllPokemons from './pages/AllPokemons'
 import Home from './pages/Home'
+
+import { InputSearcn } from '../src/styles/inputSearch'
 import { BrowserRouter } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import PokemonDetails from './pages/PokemonDetails'
 
 function App() {
@@ -10,6 +12,11 @@ function App() {
   return (
     <>
       <Header />
+
+    <InputSearcn>
+      <input placeholder='teste'/>
+      <button>Entrar</button>
+    </InputSearcn>
       <BrowserRouter>
      <Routes>
        <Route path='/' element={<Home/>}/>
