@@ -10,56 +10,78 @@ function AllPokemons() {
     const [nextPage, setNextPage] = useState(null);
     const [indexPage, setIndexPage] = useState(1);
     const [maxIndex, setMaxIndex] = useState(null);
-    
-    
 
     useEffect(() => {
 
+        
+
         const callApiPokeomn = async () => {
-            const response = await fetch("https://pokeapi.co/api/v2/pokemon")
+            const response = await fetch("https://pokeapi.co/api/v2/pokemon");
             const data = await response.json();
-           // const allPokemons = [];
             
             data.results.forEach( async (item) => {
                 const { url, name } = item;
                 const response2 = await fetch(url);
                 const data2 = await response2.json();
-                const image = data2.sprites.other.dream_world.front_default;
+                const image = await data2.sprites.other.dream_world.front_default;
                 setPokemons(pokemons => [...pokemons, {
                     name,
                     image
                 }])
-                
             })
-            //setPokemons(allPokemons);
             setPreviousPage(data.previous)
             setNextPage(data.next)
             setMaxIndex(data.count)
         }
         callApiPokeomn();
     }, [])
-    
-    console.log(pokemons)
-    
-    
+        
     async function handleNextPage() {
+        setPokemons([])
         const response = await fetch(nextPage)
         const data = await response.json();
-        setPokemons(data.results)
+        
+        data.results.forEach( async (item) => {
+            const { url, name } = item;
+            const response2 = await fetch(url);
+            const data2 = await response2.json();
+            const image = data2.sprites.other.dream_world.front_default;
+            setPokemons(pokemons => [...pokemons, {
+                name,
+                image
+            }])
+            
+        })
         setPreviousPage(data.previous)
         setNextPage(data.next)
+        setMaxIndex(data.count)
         setIndexPage(indexPage + 1)
         window.scrollTo(top);
+
     }
 
     async function handlePreviousPage() {
+        setPokemons([])
         const response = await fetch(previousPage)
         const data = await response.json();
-        setPokemons(data.results)
+
+        data.results.forEach( async (item) => {
+            const { url, name } = item;
+            const response2 = await fetch(url);
+            const data2 = await response2.json();
+            const image = data2.sprites.other.dream_world.front_default;
+            setPokemons(pokemons => [...pokemons, {
+                name,
+                image
+            }])
+            
+        })
         setPreviousPage(data.previous)
         setNextPage(data.next)
+        setMaxIndex(data.count)
         setIndexPage(indexPage - 1)
         window.scrollTo(top);
+
     }
 
     return (
@@ -82,12 +104,14 @@ function AllPokemons() {
                 </button>
             </Pagination>
             <MainContainerContent>
-
-                {pokemons.map((pokemon, index) => {
-                    return (
-                        <Pokemon key={pokemon.name} name={pokemon.name} urlImage={pokemon.image} />
-                    )
-                })}
+  
+                {
+                    pokemons.map((pokemon) => {
+                        return (
+                            <Pokemon key={pokemon.name} name={pokemon.name} urlImage={pokemon.image} />
+                        )
+                    })
+               }
             </MainContainerContent>
             <Pagination className='pagination'>
                 <button onClick={handlePreviousPage}

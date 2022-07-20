@@ -18,7 +18,8 @@ export const PokemonStyles = styled.main`
     cursor: pointer;
 
     img{
-        width: 100% ;
+        width: 100px;
+        heigt: 100px;
     }
 
 

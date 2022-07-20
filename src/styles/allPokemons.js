@@ -8,6 +8,20 @@ export const MainContainerContent = styled.main`
     position: relative;
     margin: 0 auto;
     padding: 2rem 4rem;
+
+    .whileLoading{
+        width: 100%;
+        height: 70vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loading{
+        margin-bottom: 5rem;
+    }
+
+
 `
 
 export const Pagination = styled.div`
@@ -32,6 +46,7 @@ export const Pagination = styled.div`
                 display: inline-block ;
                 background: #F8333C;
                 color: #fff;
+                border-radius: 0.25rem;
                 font-weight: bold;
             }
         }
@@ -41,11 +56,17 @@ export const Pagination = styled.div`
             color: #fff;
             background: #F8333C;
             border: none;
+            font-family: 'Roboto';
+            font-weight: bold;
             border-radius: .25rem;
             width: 100px;
             padding: 14px;
             transition: ease-in-out .2s;
-        
+       
+            &:hover{
+                transform: scale(0.9);
+            }
+
             &:disabled{
                 filter: brightness(0.7);
                 cursor: not-allowed;
